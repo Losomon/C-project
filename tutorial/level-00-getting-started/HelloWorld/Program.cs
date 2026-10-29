@@ -21,7 +21,7 @@ namespace HelloWorld
         //static means that the method belongs to the class itself rather than an instance of the class. This allows the Main method to be called without creating an object of the Program class.
         //void indicates that the Main method does not return any value. It is a common convention for the entry point of a C# application to have a void return type.
         //strings []args can hold command-line arguments
-        static void main(string[]args)
+        static void Main(string[]args)
         {
             //-------------------------------------
             //TOPIC 1:GET STARTED
