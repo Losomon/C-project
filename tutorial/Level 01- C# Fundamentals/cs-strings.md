@@ -1,173 +1,366 @@
-C# Strings
-Strings are used to store text. In C#, the string type represents a sequence of characters.
+# C# Strings
 
-1. Declaring Strings
-   A string value is written inside double quotation marks.
-   string greeting = "Hello";
-   string message = "Nice to meet you!";
-   A string can contain one word, several words, or a complete sentence.
-2. String Length
-   Use the Length property to find how many characters a string contains. Spaces and punctuation are counted too.
-   string text = "Hello World";
+---
 
-Console.WriteLine(text.Length); // Output: 11 3. Useful String Methods
-ToUpper()
-Returns a copy of the string with letters converted to uppercase.
-string text = "Hello World";
+## 1. What Is a String?
 
-Console.WriteLine(text.ToUpper()); // Output: HELLO WORLD
-ToLower()
-Returns a copy of the string with letters converted to lowercase.
-string text = "Hello World";
+A `string` is used to store text. It contains a collection of characters surrounded by double quotes (`"`).
 
-Console.WriteLine(text.ToLower()); // Output: hello world
-Important: Strings are immutable in C#. These methods return new strings; they do not modify the original string. 4. String Concatenation
+```csharp
+string greeting = "Hello";
+```
+
+Strings can contain:
+
+- Letters
+- Numbers
+- Spaces
+- Symbols
+- Sentences
+
+```csharp
+string name = "Solomon";
+string message = "Welcome to C# programming!";
+```
+
+---
+
+## 2. Creating a String
+
+### Syntax
+
+```csharp
+string variableName = "text";
+```
+
+### Example
+
+```csharp
+// Create a string variable and assign text to it
+string name = "John";
+
+// Display the string
+Console.WriteLine(name);
+```
+
+**Output:**
+
+```text
+John
+```
+
+---
+
+## 3. String Length
+
+The `Length` property returns the number of characters in a string, including spaces.
+
+```csharp
+string text = "Hello";
+
+// Get the number of characters
+int length = text.Length;
+
+Console.WriteLine(length);
+```
+
+**Output:**
+
+```text
+5
+```
+
+---
+
+## 4. Accessing Characters
+
+You can access a character in a string using its index.
+
+Indexes start at `0`.
+
+```csharp
+string name = "John";
+
+// Access the first character
+Console.WriteLine(name[0]);
+
+// Access the second character
+Console.WriteLine(name[1]);
+```
+
+**Output:**
+
+```text
+J
+o
+```
+
+---
+
+## 5. Changing to Uppercase and Lowercase
+
+Use `ToUpper()` to convert a string to uppercase.
+
+Use `ToLower()` to convert a string to lowercase.
+
+```csharp
+string name = "Solomon";
+
+// Convert the string to uppercase
+Console.WriteLine(name.ToUpper());
+
+// Convert the string to lowercase
+Console.WriteLine(name.ToLower());
+```
+
+**Output:**
+
+```text
+SOLOMON
+solomon
+```
+
+These methods return a new string. They do not modify the original string.
+
+---
+
+## 6. String Concatenation
+
 Concatenation means joining strings together.
-Using the + operator
-string firstName = "John ";
-string lastName = "Doe";
 
-string fullName = firstName + lastName;
+Use the `+` operator to join strings.
 
-Console.WriteLine(fullName); // Output: John Doe
-The space after "John " separates the two names.
-Using string.Concat()
-string firstName = "John ";
-string lastName = "Doe";
+```csharp
+string firstName = "Solomon";
+string lastName = "Mwangi";
 
-string fullName = string.Concat(firstName, lastName);
-
-Console.WriteLine(fullName); // Output: John Doe 5. Adding Numbers and Strings
-C# uses + for both numeric addition and string concatenation. The result depends on the types being combined.
-Adding numbers
-int x = 10;
-int y = 20;
-
-int result = x + y;
-
-Console.WriteLine(result); // Output: 30
-Joining strings
-string x = "10";
-string y = "20";
-
-string result = x + y;
-
-Console.WriteLine(result); // Output: 1020
-The values "10" and "20" are strings, not integers, so they are joined instead of added. 6. String Interpolation
-String interpolation inserts variable values into a string. Put $ before the opening quotation mark and place variable names inside curly braces {}.
-string firstName = "John";
-string lastName = "Doe";
-
-string fullName = $"My full name is: {firstName} {lastName}";
+// Join the two strings with a space
+string fullName = firstName + " " + lastName;
 
 Console.WriteLine(fullName);
-// Output: My full name is: John Doe
-Interpolation is often easier to read than joining many strings with +. 7. Accessing Characters in a String
-Each character has an index. C# string indexes start at 0.
+```
 
-For "Hello":
-Index Character
-0 H
-1 e
-2 l
-3 l
-4 o
+**Output:**
 
-string text = "Hello";
+```text
+Solomon Mwangi
+```
 
-Console.WriteLine(text[0]); // Output: H
-Console.WriteLine(text[1]); // Output: e
-An index outside the valid range causes an IndexOutOfRangeException. 8. Finding a Character's Position with IndexOf()
-The IndexOf() method returns the zero-based position of the first matching character or substring. If it is not found, it returns -1.
-string text = "Hello";
+---
 
-Console.WriteLine(text.IndexOf("e")); // Output: 1
-Console.WriteLine(text.IndexOf("z")); // Output: -1 9. Extracting Part of a String with Substring()
-Substring() returns part of a string.
+## 7. String Interpolation
 
-- Substring(startIndex) returns the characters from that index to the end.
-- Substring(startIndex, length) returns the specified number of characters from that index.
-  string name = "John Doe";
+String interpolation allows you to insert variables directly into a string.
 
-int position = name.IndexOf("D");
-string lastName = name.Substring(position);
+Place `$` before the opening quotation mark and put variables inside `{}`.
 
-Console.WriteLine(lastName); // Output: Doe
-Another example:
-string text = "Hello World";
+```csharp
+string name = "Solomon";
+int age = 21;
 
-string part = text.Substring(0, 5);
+// Insert variables into the message
+Console.WriteLine($"My name is {name} and I am {age} years old.");
+```
 
-Console.WriteLine(part); // Output: Hello 10. Special Characters and Escape Sequences
-Some characters have special meanings inside a string. Use a backslash (\) to include certain special characters.
-Escape sequence Result Meaning
-\' ' Single quote
-\" " Double quote
-\\ \ Backslash
-\n New line Moves text to a new line
-\t Tab Adds a horizontal tab
-\b Backspace Represents a backspace character
+**Output:**
 
-Double quotes inside a string
-string text = "She said, \"Hello!\"";
+```text
+My name is Solomon and I am 21 years old.
+```
 
-Console.WriteLine(text);
-// Output: She said, "Hello!"
-Single quote inside a string
-string text = "It's alright.";
+String interpolation is often easier to read than concatenation.
 
-Console.WriteLine(text);
-A single quote does not need escaping inside a normal double-quoted C# string.
-Backslash inside a string
-string path = "C:\\Users\\Student\\Documents";
+---
 
-Console.WriteLine(path);
-// Output: C:\Users\Student\Documents
-New line with \n
-string text = "First line\nSecond line";
+## 8. Special Characters
 
-Console.WriteLine(text);
-Output:
-First line
-Second line
-Tab with \t
-string text = "Name:\tJohn";
+Some characters have special meanings inside strings.
 
-Console.WriteLine(text);
-// Output: Name: John 11. Complete Practice Program
-string firstName = "John";
-string lastName = "Doe";
+| Character | Meaning               |
+| --------- | --------------------- |
+| `\"`      | Double quotation mark |
+| `\'`      | Single quotation mark |
+| `\\`      | Backslash             |
+| `\n`      | New line              |
+| `\t`      | Tab                   |
 
-string fullName = $"{firstName} {lastName}";
+### Example
 
-Console.WriteLine($"Full name: {fullName}");
-Console.WriteLine($"Name length: {fullName.Length}");
-Console.WriteLine($"Uppercase: {fullName.ToUpper()}");
-Console.WriteLine($"Lowercase: {fullName.ToLower()}");
-Console.WriteLine($"First character: {fullName[0]}");
-Console.WriteLine($"Position of D: {fullName.IndexOf("D")}");
-Console.WriteLine($"Last name: {fullName.Substring(fullName.IndexOf("D"))}"); 12. Exercises
-Try solving these without looking at the examples.
+```csharp
+// Include quotation marks inside a string
+Console.WriteLine("He said, \"Hello!\"");
 
-1. Create a string variable called school and store the name of your school.
-2. Print the number of characters in school.
-3. Convert the school name to uppercase and lowercase.
-4. Create firstName and lastName variables and join them into fullName.
-5. Rewrite the full-name output using string interpolation.
-6. Given string word = "Programming";, print the first and fourth characters.
-7. Find the index of "g" in "Programming".
-8. Extract "World" from "Hello World" using Substring().
-9. Print She said, "C# is interesting!" using an escaped double quote.
-10. Print two lines using \n and align two values using \t.
-    Key Points to Remember
+// Print text on separate lines
+Console.WriteLine("Hello\nWorld");
 
-- A string stores text inside double quotes.
-- Length returns the number of characters in a string.
-- ToUpper() and ToLower() return converted strings.
-- - and string.Concat() can join strings.
-- $"..." enables string interpolation.
-- String indexes start at 0.
-- IndexOf() finds a position and returns -1 when no match is found.
-- Substring() extracts part of a string.
-- Escape sequences let you include special characters in strings.
-- Strings are immutable: string operations return new strings rather than changing the original.
+// Add a tab between words
+Console.WriteLine("Name:\tSolomon");
+```
+
+**Output:**
+
+```text
+He said, "Hello!"
+Hello
+World
+Name:    Solomon
+```
+
+---
+
+## 9. Checking Whether a String Contains Text
+
+The `Contains()` method checks whether a string contains a specified sequence of characters.
+
+It returns a Boolean value: `true` or `false`.
+
+```csharp
+string message = "Welcome to C#";
+
+// Check whether the string contains C#
+Console.WriteLine(message.Contains("C#"));
+
+// Check whether the string contains Java
+Console.WriteLine(message.Contains("Java"));
+```
+
+**Output:**
+
+```text
+True
+False
+```
+
+---
+
+## 10. Replacing Text
+
+The `Replace()` method replaces one part of a string with another.
+
+```csharp
+string message = "I like Java";
+
+// Replace Java with C#
+string updatedMessage = message.Replace("Java", "C#");
+
+Console.WriteLine(updatedMessage);
+```
+
+**Output:**
+
+```text
+I like C#
+```
+
+---
+
+## 11. Removing Extra Whitespace
+
+The `Trim()` method removes whitespace from the beginning and end of a string.
+
+```csharp
+string name = "   Solomon   ";
+
+// Remove whitespace from both ends
+string cleanedName = name.Trim();
+
+Console.WriteLine(cleanedName);
+```
+
+**Output:**
+
+```text
+Solomon
+```
+
+`Trim()` does not remove spaces between words.
+
+---
+
+## 12. Real-World Application
+
+Strings are commonly used for:
+
+- Usernames and names
+- Email addresses
+- Product names
+- Search queries
+- Messages and notifications
+- Address and location information
+
+### Example: Creating a User Profile Message
+
+```csharp
+string firstName = "Solomon";
+string role = "Software Engineer";
+string country = "Kenya";
+
+// Create a profile message using string interpolation
+string profile = $"My name is {firstName}. I am a {role} from {country}.";
+
+// Display the profile
+Console.WriteLine(profile);
+```
+
+**Output:**
+
+```text
+My name is Solomon. I am a Software Engineer from Kenya.
+```
+
+---
+
+## 13. Exercises
+
+Try solving these without looking at the solutions.
+
+### Exercise 1: Create a String
+
+Create a string variable called `school` and assign your school name to it. Print it.
+
+### Exercise 2: String Length
+
+Create a string containing your first name. Print the number of characters.
+
+### Exercise 3: Uppercase and Lowercase
+
+Create a string containing `"CSharp Programming"`. Print it in uppercase and lowercase.
+
+### Exercise 4: Concatenation
+
+Create `firstName` and `lastName` variables. Join them into a full name with a space between them.
+
+### Exercise 5: String Interpolation
+
+Create variables for your name, age, and course. Print them in one sentence using string interpolation.
+
+### Exercise 6: Replace Text
+
+Create the string `"I am learning Java"`. Replace `"Java"` with `"C#"` and print the result.
+
+### Exercise 7: Check Text
+
+Create the string `"Welcome to programming"`. Check whether it contains `"programming"`.
+
+### Exercise 8: Clean User Input
+
+Create a string containing spaces before and after a name. Use `Trim()` and print the cleaned name.
+
+---
+
+## 14. Summary
+
+| Concept       | Description                                   |
+| ------------- | --------------------------------------------- |
+| `string`      | Stores text                                   |
+| `.Length`     | Returns the number of characters              |
+| `[index]`     | Accesses a character                          |
+| `.ToUpper()`  | Converts text to uppercase                    |
+| `.ToLower()`  | Converts text to lowercase                    |
+| `+`           | Joins strings                                 |
+| `$"..."`      | Inserts variables into strings                |
+| `.Contains()` | Checks whether text exists                    |
+| `.Replace()`  | Replaces part of a string                     |
+| `.Trim()`     | Removes whitespace from the beginning and end |
+
+**Next topic:** C# Booleans
